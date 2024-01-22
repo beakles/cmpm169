@@ -22,6 +22,7 @@ class Shape {
     this.name = name;
     this.sides = sides;
     this.size = size;
+    this.sizeOffset = 20;
     this.rotation = rotation;
     this.rotationChange = rotationChange;
     this.shapeOrigin = new ShapePoint("origin", shapeOriginX, shapeOriginY);
@@ -56,7 +57,13 @@ class Shape {
       // let v0 = createVector(this.shapeOrigin.XOrigin, this.shapeOrigin.YOrigin);
       
       // noStroke();
-      let vectorAngle = p5.Vector.fromAngle(2 * PI / this.sides * pointNum + radians(this.rotation), this.size);
+      let vectorAngle = p5.Vector.fromAngle(2 * PI / this.sides * pointNum + radians(this.rotation), this.size + this.sizeOffset);
+      
+      if (this.sizeOffset > 0) {
+        this.sizeOffset -= 1;
+      } else {
+        this.sizeOffset = 0;
+      }
       
       pointCurrent.XOffset = this.warpScale * sin(this.warpDirection * this.warpSpeed * (waveIncrement / 10) + pointNum);
       pointCurrent.YOffset = this.warpScale * sin(this.warpDirection * this.warpSpeed * (waveIncrement / 10) + pointNum);
