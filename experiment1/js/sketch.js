@@ -104,8 +104,17 @@ class Shape {
   }
 }
 
+let canvasContainer;
+
 function setup() {
-  createCanvas(800, 800); // 800px X 800px canvas size
+  canvasContainer = $("#canvas-container");
+  let canvas = createCanvas(800, 800); // 800px X 800px canvas size
+  canvas.parent("canvas-container");
+
+  $(window).resize(function() {
+    // console.log("Resizing...");
+    resizeCanvas(canvasContainer.width(), canvasContainer.height());
+  });
   
   let possibleShapeProperties = {
     sides: floor(random(3, 9)),
