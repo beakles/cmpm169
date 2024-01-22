@@ -189,7 +189,6 @@ function draw() {
   }
   
   waveIncrement += 1;
-  
   if (connectionLineSizeCurrent > 0) {
     connectionLineSizeCurrent -= 1;
   } else {
@@ -199,8 +198,11 @@ function draw() {
 
 // Spawn a new shape on mouse click
 function mouseClicked() {
+  if (mouseX > width || mouseX < 0 || mouseY > height || mouseY < 0) {
+    return;
+  }
+
   randomizeShapeProperties();
-  
   let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY, true);
   shapesArray.push(shapeNew);
 }
