@@ -138,8 +138,8 @@ function randomizeShapeProperties() {
   possibleShapeProperties.warpSpeed = random(100, 200) / 100;
   possibleShapeProperties.warpScale = random(200, 300) / 100;
   possibleShapeProperties.warpDirection = random(-100, 100) / 100;
-  possibleShapeProperties.shapeOriginX = floor(random(0 + 50, width - 50));
-  possibleShapeProperties.shapeOriginY = floor(random(0 + 50, height - 50));
+  possibleShapeProperties.shapeOriginX = floor(random(0 + 50, canvasContainer.width() - 50));
+  possibleShapeProperties.shapeOriginY = floor(random(0 + 50, canvasContainer.height() - 50));
 }
 
 function setup() {
