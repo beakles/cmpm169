@@ -1,3 +1,7 @@
+// sketch.js - purpose and description here
+// Author: Brannon Eakles
+// Date: 01/22/2024
+
 let waveIncrement = 0;
 let shapesArray = [];
 
