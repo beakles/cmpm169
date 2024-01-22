@@ -1,10 +1,12 @@
-// sketch.js - purpose and description here
+// sketch.js - A canvas of geometrically-shaped germs made of vectors.
 // Author: Brannon Eakles
 // Date: 01/22/2024
 
+// Global variables
 let waveIncrement = 0;
 let shapesArray = [];
 
+// Shape point class
 class ShapePoint {
   constructor(name, shapePointX, shapePointY) {
     this.pointPrevious = null;
@@ -21,6 +23,7 @@ class ShapePoint {
   }
 }
 
+// Shape class (built from shape point objects)
 class Shape {
   constructor(name, sides, size, rotation, rotationChange, warpSpeed, warpScale, warpDirection, shapeOriginX, shapeOriginY) {
     this.name = name;
@@ -128,8 +131,8 @@ function setup() {
     warpSpeed: random(100, 200) / 100,
     warpScale: random(200, 300) / 100,
     warpDirection: random(-100, 100) / 100,
-    shapeOriginX: floor(random(0 + 50, width - 100)),
-    shapeOriginY: floor(random(0 + 50, height - 100))
+    shapeOriginX: floor(random(0 + 50, width - 50)),
+    shapeOriginY: floor(random(0 + 50, height - 50))
   }
   
   for (let increment = 0; increment < 3; increment += 1) {
@@ -170,17 +173,17 @@ function draw() {
 
 function mouseClicked() {
 
-let possibleShapeProperties = {
-  sides: floor(random(3, 9)),
-  size: random(1000, 5000) / 100,
-  rotation: random(-360, 361),
-  rotationChange: random(-500, 500) / 1000,
-  warpSpeed: random(100, 200) / 100,
-  warpScale: random(200, 300) / 100,
-  warpDirection: random(-100, 100) / 100,
-  shapeOriginX: floor(random(0 + 50, width - 100)),
-  shapeOriginY: floor(random(0 + 50, height - 100))
-}
+  let possibleShapeProperties = {
+    sides: floor(random(3, 9)),
+    size: random(1000, 5000) / 100,
+    rotation: random(-360, 361),
+    rotationChange: random(-500, 500) / 1000,
+    warpSpeed: random(100, 200) / 100,
+    warpScale: random(200, 300) / 100,
+    warpDirection: random(-100, 100) / 100,
+    shapeOriginX: floor(random(0 + 50, width - 100)),
+    shapeOriginY: floor(random(0 + 50, height - 100))
+  }
   
   let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY);
   shapesArray.push(shapeNew);
