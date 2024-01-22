@@ -56,6 +56,7 @@ class Shape {
     }
   }
   
+  // Called every frame to update the current properties of a shape object
   updateShape() {
     let pointCurrent = this.shapePoints[0];
     let pointNum = 0;
@@ -88,6 +89,7 @@ class Shape {
     }
   }
   
+  // Draw the shape to the canvas
   displayShape() {
     let pointCurrent = this.shapePoints[0];
     let pointLast = null;
@@ -114,6 +116,8 @@ class Shape {
 let canvasContainer;
 
 function setup() {
+
+  // Create a canvas for the vector germs
   canvasContainer = $("#canvas-container");
   let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvas.parent("canvas-container");
@@ -123,6 +127,7 @@ function setup() {
     resizeCanvas(canvasContainer.width(), canvasContainer.height());
   });
   
+  // Randomized shape properties
   let possibleShapeProperties = {
     sides: floor(random(3, 9)),
     size: random(1000, 5000) / 100,
@@ -135,6 +140,7 @@ function setup() {
     shapeOriginY: floor(random(0 + 50, height - 50))
   }
   
+  // Spawn a few example shapes
   for (let increment = 0; increment < 3; increment += 1) {
     let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY);
     shapesArray.push(shapeNew);
@@ -151,6 +157,7 @@ function setup() {
   }
 }
 
+// Update the shapes on screen every frame
 function draw() {
   background(20, 20, 20);
   
@@ -171,6 +178,7 @@ function draw() {
   waveIncrement += 1;
 }
 
+// Spawn a new shape on mouse click
 function mouseClicked() {
 
   let possibleShapeProperties = {
@@ -188,6 +196,7 @@ function mouseClicked() {
   let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY);
   shapesArray.push(shapeNew);
 }
+
 /*
 // sketch.js - purpose and description here
 // Author: Your Name
