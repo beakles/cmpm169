@@ -3,8 +3,12 @@
 // Date: 01/22/2024
 
 // Global variables
-let waveIncrement = 0;
-let shapesArray = [];
+let waveIncrement = 0; // Increment for animations
+let shapesArray = []; // Container for the shapes
+let connectionLineSizeMax = 10;
+let connectionLineSizeCurrent = 0;
+let shapeLast = null; // Previous shape generated
+let shapeCurrent = null; // Newest shape generated
 let canvasContainer; // Container for the canvas
 let possibleShapeProperties = { // Randomized properties for generated shapes
   sides: 0,
@@ -37,7 +41,7 @@ class ShapePoint {
 
 // Shape class (built from shape point objects)
 class Shape {
-  constructor(name, sides, size, rotation, rotationChange, warpSpeed, warpScale, warpDirection, shapeOriginX, shapeOriginY) {
+  constructor(name, sides, size, rotation, rotationChange, warpSpeed, warpScale, warpDirection, shapeOriginX, shapeOriginY, trail) {
     this.name = name;
     this.sides = sides;
     this.size = size;
@@ -50,7 +54,7 @@ class Shape {
     this.warpScale = warpScale;
     this.warpDirection = warpDirection;
     
-    this.shapeColor = color(random(0, 255), random(0, 255), random(0, 255));
+    this.shapeColor = color(random(40, 255), random(40, 255), random(40, 255));
     this.specialShape = true;
     
     let lastShapePoint = null;
@@ -65,6 +69,13 @@ class Shape {
       }
       
       lastShapePoint = newShapePoint;
+    }
+    
+    shapeLast = shapeCurrent;
+    shapeCurrent = this;
+    
+    if (trail) {
+      connectionLineSizeCurrent = connectionLineSizeMax;
     }
   }
   
@@ -135,12 +146,11 @@ function randomizeShapeProperties() {
   possibleShapeProperties.warpSpeed = random(100, 200) / 100;
   possibleShapeProperties.warpScale = random(200, 300) / 100;
   possibleShapeProperties.warpDirection = random(-100, 100) / 100;
-  possibleShapeProperties.shapeOriginX = floor(random(0 + 50, canvasContainer.width() - 50));
-  possibleShapeProperties.shapeOriginY = floor(random(0 + 50, canvasContainer.height() - 50));
+  possibleShapeProperties.shapeOriginX = floor(random(mouseX - 50, mouseX + 51));
+  possibleShapeProperties.shapeOriginY = floor(random(mouseY - 50, mouseY + 51));
 }
 
 function setup() {
-  // Create a canvas for the vector germs
   canvasContainer = $("#canvas-container");
   let canvasNew = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvasNew.parent("canvas-container");
@@ -154,8 +164,8 @@ function setup() {
   randomizeShapeProperties();
   
   // Spawn a few sample shapes
-  for (let increment = 0; increment < 3; increment += 1) {
-    let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY);
+  for (let increment = 0; increment < 1; increment += 1) {
+    let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, floor(random(0 + 50, width - 49)), floor(random(0 + 50, height - 49)), false);
     shapesArray.push(shapeNew);
     randomizeShapeProperties();
   }
@@ -170,13 +180,27 @@ function draw() {
     shapesArray[increment].displayShape();
   }
   
+  if (shapeLast) {
+    stroke(255, 255, 255);
+    strokeWeight(connectionLineSizeCurrent);
+    line(shapeLast.shapeOrigin.XOrigin, shapeLast.shapeOrigin.YOrigin, shapeCurrent.shapeOrigin.XOrigin, shapeCurrent.shapeOrigin.YOrigin);
+    ellipse(shapeLast.shapeOrigin.XOrigin, shapeLast.shapeOrigin.YOrigin, connectionLineSizeCurrent, connectionLineSizeCurrent);
+    ellipse(shapeCurrent.shapeOrigin.XOrigin, shapeCurrent.shapeOrigin.YOrigin, connectionLineSizeCurrent, connectionLineSizeCurrent);
+  }
+  
   waveIncrement += 1;
+  
+  if (connectionLineSizeCurrent > 0) {
+    connectionLineSizeCurrent -= 1;
+  } else {
+    connectionLineSizeCurrent = 0;
+  }
 }
 
 // Spawn a new shape on mouse click
 function mouseClicked() {
   randomizeShapeProperties();
   
-  let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY);
+  let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY, true);
   shapesArray.push(shapeNew);
 }
