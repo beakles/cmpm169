@@ -142,7 +142,7 @@ function randomizeShapeProperties() {
 function setup() {
   // Create a canvas for the vector germs
   canvasContainer = $("#canvas-container");
-  let canvasNew = createCanvas(canvasContainer.width(), 800);
+  let canvasNew = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvasNew.parent("canvas-container");
   // resize canvas is the page is resized
   $(window).resize(function() {
