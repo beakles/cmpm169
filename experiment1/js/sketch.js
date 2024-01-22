@@ -108,7 +108,7 @@ let canvasContainer;
 
 function setup() {
   canvasContainer = $("#canvas-container");
-  let canvas = createCanvas(800, 800); // 800px X 800px canvas size
+  let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvas.parent("canvas-container");
 
   $(window).resize(function() {
