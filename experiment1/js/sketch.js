@@ -102,7 +102,7 @@ class Shape {
       stroke(this.shapeColor);
       strokeWeight(this.size / 5);
       if (this.specialShape) {
-        circle(pointCurrent.XResult, pointCurrent.YResult, this.size / 5);
+        ellipse(pointCurrent.XResult, pointCurrent.YResult, this.size / 5, this.size / 5);
       }
       pointLast = pointCurrent;
       pointCurrent = pointCurrent.pointNext;
@@ -113,7 +113,34 @@ class Shape {
   }
 }
 
+// Variable for the canvas
 let canvasContainer;
+
+// Randomized properties for generated shapes
+let possibleShapeProperties = {
+  sides: 0,
+  size: 0,
+  rotation: 0,
+  rotationChange: 0,
+  warpSpeed: 0,
+  warpScale: 0,
+  warpDirection: 0,
+  shapeOriginX: 0,
+  shapeOriginY: 0,
+}
+
+// Randomize the properties for the shape
+function randomizeShapeProperties() {
+  possibleShapeProperties.sides = floor(random(3, 9));
+  possibleShapeProperties.size = random(1000, 5000) / 100;
+  possibleShapeProperties.rotation = random(-360, 361);
+  possibleShapeProperties.rotationChange = random(-500, 500) / 1000;
+  possibleShapeProperties.warpSpeed = random(100, 200) / 100;
+  possibleShapeProperties.warpScale = random(200, 300) / 100;
+  possibleShapeProperties.warpDirection = random(-100, 100) / 100;
+  possibleShapeProperties.shapeOriginX = floor(random(0 + 50, width - 50));
+  possibleShapeProperties.shapeOriginY = floor(random(0 + 50, height - 50));
+}
 
 function setup() {
 
@@ -128,32 +155,14 @@ function setup() {
   });
   
   // Randomized shape properties
-  let possibleShapeProperties = {
-    sides: floor(random(3, 9)),
-    size: random(1000, 5000) / 100,
-    rotation: random(-360, 361),
-    rotationChange: random(-500, 500) / 1000,
-    warpSpeed: random(100, 200) / 100,
-    warpScale: random(200, 300) / 100,
-    warpDirection: random(-100, 100) / 100,
-    shapeOriginX: floor(random(0 + 50, width - 50)),
-    shapeOriginY: floor(random(0 + 50, height - 50))
-  }
+  randomizeShapeProperties();
   
   // Spawn a few example shapes
   for (let increment = 0; increment < 3; increment += 1) {
     let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY);
     shapesArray.push(shapeNew);
-    
-    possibleShapeProperties.sides = floor(random(3, 9));
-    possibleShapeProperties.size = random(1000, 5000) / 100;
-    possibleShapeProperties.rotation = random(-360, 361);
-    possibleShapeProperties.rotationChange = random(-500, 500) / 1000;
-    possibleShapeProperties.warpSpeed = random(100, 200) / 100;
-    possibleShapeProperties.warpScale = random(200, 300) / 100;
-    possibleShapeProperties.warpDirection = random(-100, 100) / 100,
-    possibleShapeProperties.shapeOriginX = floor(random(0 + 50, width - 100));
-    possibleShapeProperties.shapeOriginY = floor(random(0 + 50, height - 100));
+
+    randomizeShapeProperties();
   }
 }
 
@@ -173,25 +182,13 @@ function draw() {
     shapesArray[increment].displayShape();
   }
   
-  
-  
   waveIncrement += 1;
 }
 
 // Spawn a new shape on mouse click
 function mouseClicked() {
 
-  let possibleShapeProperties = {
-    sides: floor(random(3, 9)),
-    size: random(1000, 5000) / 100,
-    rotation: random(-360, 361),
-    rotationChange: random(-500, 500) / 1000,
-    warpSpeed: random(100, 200) / 100,
-    warpScale: random(200, 300) / 100,
-    warpDirection: random(-100, 100) / 100,
-    shapeOriginX: floor(random(0 + 50, width - 100)),
-    shapeOriginY: floor(random(0 + 50, height - 100))
-  }
+  randomizeShapeProperties();
   
   let shapeNew = new Shape("geometry", possibleShapeProperties.sides, possibleShapeProperties.size, possibleShapeProperties.rotation, possibleShapeProperties.rotationChange, possibleShapeProperties.warpSpeed, possibleShapeProperties.warpScale, possibleShapeProperties.warpDirection, possibleShapeProperties.shapeOriginX, possibleShapeProperties.shapeOriginY);
   shapesArray.push(shapeNew);
