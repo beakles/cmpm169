@@ -120,7 +120,7 @@ function setup() {
 
   // Create the walls of the labyrinth, increasing the likelihood of having openings for each iteration
   for (let labyrinthWallCount = 1; labyrinthWallCount < numWalls; labyrinthWallCount += 1) {
-    let labyrinthWallNew = new LabyrinthWall(3 * labyrinthWallCount + 1, 10 * labyrinthWallCount, canvasContainer.width() / 2, canvasContainer.height() / 2, random(-360, 360), wallSegmentClosedChance);
+    let labyrinthWallNew = new LabyrinthWall(2 * labyrinthWallCount + 1, 10 * labyrinthWallCount, canvasContainer.width() / 2, canvasContainer.height() / 2, random(-360, 360), wallSegmentClosedChance);
     labyrinthWallArray.push(labyrinthWallNew);
     
     wallSegmentClosedChance = 100 - (labyrinthWallCount * 2);
