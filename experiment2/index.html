@@ -35,7 +35,7 @@
 				<p>What code did you start with? (You don't need to provide the code itself, but where did you start?) Document this step briefly.</p>
 				<br>
 				<h3>Documentation</h3>
-				<p>Put text here</p>
+				<p>I wanted to create a generative maze with a more complex structure akin to the circular version from Greek mythology, assuming I can figure out how to create such a pattern. In addition, I wanted to try to incorporate my ideas from Experiment 2 with the randomized vector trees, perhaps resulting in a concoction between a labyrinth structure and a binary search tree pattern complete with randomized generation.</p>
 			</div>
 
 			<div class="minor-section">
@@ -44,7 +44,10 @@
 				<p>How did you extend the code or combine with another technique to make something new? Document this step.</p>
 				<br>
 				<h3>Documentation</h3>
-				<p>Put text here</p>
+				<p>The first step I took to extend the original design was to remove the integration with the mouse location so that the artwork remains a constant size and shape.</p>
+				<p>I then adjust the overall shape of the artwork to match with the circles of a labyrinth. While it created an interesting pattern of circles, further adjustments were necessary to create the structure I desired.</p>
+				<p>I then further adjusted the shape of the circles to instead create a wide arc with a small gap to create “layers” of the labyrinth that would eventually be traced from the center to the end. I also adjusted the colors to create a better contrast between the background and the shapes.</p>
+				<p>I then adjusted the location and count of the arc such that they now spawned in the center of the canvas, with each new outer arc overlapping the arcs of its children. This produced a structure that was very close to what I was aiming for, but it still needed work to encapsulate the maze-like dreariness and hopelessness of the labyrinth.</p>
 			</div>
 
 			<div class="minor-section">
@@ -53,7 +56,11 @@
 				<p>How did you use the code as a jumping off point to create something truly unique and novel? Document this step thoroughly.</p>
 				<br>
 				<h3>Documentation</h3>
-				<p>Put text here</p>
+				<p>To start my innovation, I changed my design to function as a linked list of points with lines drawing from each point. This would provide more flexibility to how I can structure my labyrinth walls such as having multiple gaps between sections or altering the scale of the walls to allow for more gaps or create a more gradual curve.</p>
+				<p>For the next step, I removed the line connecting the last point in the linked list of points to the first point, added a random rotation between -360 and 360 degrees, and added a loop to generate a sequence of increasingly larger labyrinth walls.</p>
+				<p>I decided to adjust the size of the labyrinth to match the size of the canvas (either the width or height depending on which dimension is greater) and added a gradual rotation to the walls to make the art feel more “animated” and to add to the sense of confusion associated with mazes.</p>
+				<p>While adjusting parameters, I ran into a performance “wall” with the artwork: a labyrinth that was too “detailed” or too “segmented” greatly diminished the performance of the browser, which detracted from the experience. I decided to reduce the number of segments in the walls and increased the scale of each consecutive wall to compensate for the loss.</p>
+				<p>In addition, I created functionality such that walls that are further away from the center are more likely to have “gaps” in its structure; this further reduced the performance load while also adding visual flair to the design as if the labyrinth itself is degrading.</p>
 			</div>
 
 			<div class="minor-section">
@@ -69,19 +76,19 @@
 				<ul>
 					<li>
 						<h4><u>Contributions</u></h4>
-						<p>Put text here</p>
+						<p>I made the entirety of the code for this artwork, originally taking inspiration from work done by the inspirers mentioned above.</p>
 					</li>
 					<li>
 						<h4><u>Reflection</u></h4>
-						<p>Put text here</p>
+						<p>I like the gradual, subtle rotation of the labyrinth walls coupled with the gradual decay of the walls as the layers get increasingly larger.</p>
 					</li>
 					<li>
 						<h4><u>Highs</u></h4>
-						<p>Put text here</p>
+						<p>I like the gradual rotation of the labyrinth walls and the way it “scales” up to the size of the canvas it is located in.</p>
 					</li>
 					<li>
 						<h4><u>Lows</u></h4>
-						<p>Put text here</p>
+						<p>Trying to maintain the appearance and aesthetic of the artwork while still optimizing the code for a more efficient and performant demonstration proved to be extremely difficult. I had to find the right balance that would not detrimentally degrade the viewing experience.</p>
 					</li>
 				</ul>
 			</div>
