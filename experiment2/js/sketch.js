@@ -25,7 +25,7 @@ class LabyrinthWall {
     this.scale = newScale;
     this.rotation = newRotation;
     this.rotationOffset = 0;
-    this.rotationIncrement = random(-20, 20) / 100;
+    this.rotationIncrement = random(-10, 10) / 100;
 
     this.pointOrigin = new LabyrinthWallPoint(newOriginX, newOriginY, false);
     this.pointsArray = [];
@@ -123,7 +123,7 @@ function setup() {
     let labyrinthWallNew = new LabyrinthWall(2 * labyrinthWallCount + 1, 20 * labyrinthWallCount, canvasContainer.width() / 2, canvasContainer.height() / 2, random(-360, 360), wallSegmentClosedChance);
     labyrinthWallArray.push(labyrinthWallNew);
     
-    wallSegmentClosedChance = 100 - (labyrinthWallCount * 1);
+    wallSegmentClosedChance = 100 - (labyrinthWallCount * 1.5);
   }
 }
 
