@@ -29,8 +29,8 @@ let sound4;
 function preload() {
     sound1 = loadSound("assets/cameraRestart.wav");
     sound2 = loadSound("assets/cameraShutdown.wav");
-    sound2.volume(0.7);
-    sound2.rate(0.5);
+    // sound2.volume(0.7);
+    // sound2.rate(0.5);
     sound3 = loadSound("assets/click.wav");
     sound4 = loadSound("assets/staticSpawn.wav");
 }
@@ -131,6 +131,7 @@ function draw() {
         let randomEffect = random(0, 100);
         if (randomEffect <= 50) {
           filter(DILATE);
+          sound3.setVolume(1);
           sound3.play();
         } else {
           filter(THRESHOLD);
@@ -166,6 +167,7 @@ function draw() {
   
   // Crash the camera
   if (currentVideoUpdateFrequency >= settings.videoUpdateFrequencyMicActive && microphoneLevelMap < settings.microphoneLevelThreshold) {
+    sound3.setVolume(0.5);
     sound3.play();
     scatterScreen(7, (width / 3) * (videoUpdateDebounce / currentVideoUpdateFrequency));
   }
