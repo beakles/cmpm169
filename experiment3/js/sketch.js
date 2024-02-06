@@ -37,12 +37,19 @@ function preload() {
 
 // Set up the video and microphone feeds
 function setup() {
-  createCanvas(600, 600);
+  canvasContainer = $("#canvas-container");
+  let canvasNew = createCanvas(canvasContainer.width(), canvasContainer.height());
+  canvasNew.parent("canvas-container");
+  // resize canvas is the page is resized
+  $(window).resize(function() {
+      console.log("Resizing...");
+      resizeCanvas(canvasContainer.width(), canvasContainer.height());
+  });
   
   background(0, 0, 0);
   
   videoFeed = createCapture(VIDEO);
-  videoFeed.size(width, height);
+  videoFeed.size(canvasContainer.width(), canvasContainer.height());
   videoFeed.hide();
   
   microphone = new p5.AudioIn();
@@ -59,8 +66,8 @@ function scatterScreen(times, size) {
   }
   
   for (let increment = 0; increment < times; increment += 1) {
-    let subImageDistortionX = random(width);
-    let subImageDistortionY = random(height);
+    let subImageDistortionX = random(canvasContainer.width());
+    let subImageDistortionY = random(canvasContainer.height());
 
     let subImageDistortionXNew = round(subImageDistortionX + random(-size, size));
     let subImageDistortionYNew = round(subImageDistortionY + random(-size, size));
@@ -73,20 +80,20 @@ function scatterScreen(times, size) {
 function drawCrosshair() {
   fill(255, 255, 255, 255);
   stroke(0, 0, 0, 0);
-  rect(width - 110, height - 20, 100, 10);
-  rect(width - 20, height - 110, 10, 100);
+  rect(canvasContainer.width() - 110, canvasContainer.height() - 20, 100, 10);
+  rect(canvasContainer.width() - 20, canvasContainer.height() - 110, 10, 100);
 
-  rect(0 + 10, height - 20, 100, 10);
-  rect(0 + 10, height - 110, 10, 100);
+  rect(0 + 10, canvasContainer.height() - 20, 100, 10);
+  rect(0 + 10, canvasContainer.height() - 110, 10, 100);
 
-  rect(width - 110, 0 + 10, 100, 10);
-  rect(width - 20, 0 + 10, 10, 100);
+  rect(canvasContainer.width() - 110, 0 + 10, 100, 10);
+  rect(canvasContainer.width() - 20, 0 + 10, 10, 100);
 
   rect(0 + 10, 0 + 10, 100, 10);
   rect(0 + 10, 0 + 10, 10, 100);
 
-  rect(width / 2 - 18, height / 2, 40, 5);
-  rect(width / 2, height / 2 - 18, 5, 40);
+  rect(canvasContainer.width() / 2 - 18, canvasContainer.height() / 2, 40, 5);
+  rect(canvasContainer.width() / 2, canvasContainer.height() / 2 - 18, 5, 40);
 }
 
 // 
@@ -95,7 +102,7 @@ function draw() {
     if (currentVideoUpdateFrequency >= settings.videoUpdateFrequencyMicActive) {
       fill(255, 0, 0, 255);
       stroke(0, 0, 0, 0);
-      rect(0, 0, width, height)
+      rect(0, 0, canvasContainer.width(), canvasContainer.height())
       currentVideoUpdateFrequency = settings.videoUpdateFrequency;
       if (!sound1.isPlaying()) {
         sound1.play();
@@ -103,7 +110,7 @@ function draw() {
     } else {
       videoUpdateDebounce = 0;
       currentVideoUpdateFrequency = settings.videoUpdateFrequency;
-      image(videoFeed, 0, 0, width, height);
+      image(videoFeed, 0, 0, canvasContainer.width(), canvasContainer.height());
         
       drawCrosshair();
       
@@ -169,7 +176,7 @@ function draw() {
   if (currentVideoUpdateFrequency >= settings.videoUpdateFrequencyMicActive && microphoneLevelMap < settings.microphoneLevelThreshold) {
     sound3.setVolume(0.5);
     sound3.play();
-    scatterScreen(7, (width / 3) * (videoUpdateDebounce / currentVideoUpdateFrequency));
+    scatterScreen(7, (canvasContainer.width() / 3) * (videoUpdateDebounce / currentVideoUpdateFrequency));
   }
   
   // Minor glitches throughout the art
