@@ -37,7 +37,11 @@
 				<p>What code did you start with? (You don't need to provide the code itself, but where did you start?) Document this step briefly.</p>
 				<br>
 				<h3>Documentation</h3>
-				<p>blahblahblah</p>
+				<p>My inspiration for this experiment drew primarily from the following pieces:</p>
+				<a href="http://www.generative-gestaltung.de/2/sketches/?01_P/P_4_3_3_02">P_4_3_3_02 by Benedikt Groß, Hartmut Bohnacker, Julia Laub, Claudius Lazzeroni with contributions by Joey Lee and Niels Poldervaart</a>
+				<a href="http://www.generative-gestaltung.de/2/sketches/?01_P/P_4_1_2_02">P_4_1_2_02 by Benedikt Groß, Hartmut Bohnacker, Julia Laub, Claudius Lazzeroni with contributions by Joey Lee and Niels Poldervaart</a>
+				<p>I gravitated towards the way the image gradually warped, distorted, and transformed itself over time. I wanted to see if I could use a similar method but using sound either as a premade audio file or with a live audio feed to distort the image in one aspect or another.</p>
+				<p>One idea I thought of for this experiment was to use both a video and audio feed to distort the result akin to the ripples in water when an object lands in it, with louder or higher frequencies distorting more of the image.</p>
 			</div>
 
 			<div class="minor-section">
@@ -46,7 +50,10 @@
 				<p>How did you extend the code or combine with another technique to make something new? Document this step.</p>
 				<br>
 				<h3>Documentation</h3>
-				<p>blahblahblah</p>
+				<p>I started with P_4_1_2_02 as it already had the distortion effect I was looking for. I then disabled the keybinds and replaced the image with a video feed.</p>
+				<p>I then reorganized the code such that the video image refreshes every frame, which means the “glitch” effect present in the original artwork would add a faint jitter to the image which I was really surprised about. I then attempted to convert the “jitter” effect into a “water ripple” effect that would react to the user’s microphone volume.</p>
+				<p>After testing, however, I realized that the website, while not frozen, was running unbearably slow to the point where the video feed wouldn’t show up on the canvas fast enough before it was replaced. I learned later that a distortion effect like the rippling of water is extremely computationally expensive; I tried many ways to adjust the code to squeeze out as much performance as possible, but to no avail.</p>
+				<p>Eventually, I gave up and went back to the drawing board with the original artwork I used as references, losing an hour or so of progress as a result. After collecting myself, I chose to scope down my ambitious idea for the sake of creating a more functional and performant piece of artwork.</p>
 			</div>
 
 			<div class="minor-section">
@@ -55,7 +62,13 @@
 				<p>How did you use the code as a jumping off point to create something truly unique and novel? Document this step thoroughly.</p>
 				<br>
 				<h3>Documentation</h3>
-				<p>blahblahblah</p>
+				<p>After realizing that the “ripple” effect I desired wouldn’t work out due to performance costs, I went back to the drawing board with the example sketch that features the image becoming “sliced” into various blocks. I first started by creating the video feed that will be used as a reference to creating the ripple distortion effect.</p>
+				<p>Strangely, the video feed is separated from the canvas boundaries. To fix this, I need to hide the video feed itself then create images of each frame of the video feed within the canvas.</p>
+				<p>To get a better perspective and to test that the camera does work, I adjusted the camera source to reflect what my phone’s camera sees. I also tested the microphone input of p5js with my phone’s microphone so that I can later add distortion effects to the frame’s pixels depending on the loudness of the sound.</p>
+				<p>To both save on performance costs and to lean into the “found footage” aesthetic I am going for, I deliberately lowered the frame rate of the camera to 24 frames per second. The glitch effects that I plan to re-use from the example artwork and tweak will run at a faster frame rate to further emphasize their impact when the camera is eventually breaking down.</p>
+				<p>I then added a “loudness trigger” that completely scrambles the camera feed if the audio in the room is too loud, resetting it to the default, more stable feed after a few seconds. I added a “greyscale” filter to the video feed to give it a more “antique” look.</p>
+				<p>I then added various “glitch” effects to the artwork, either dilating or creating a threshold within the image to give the perspective an “unstable” effect.</p>
+				<p>As a visual touch, I added lines, a crosshair, and a “recording” prompt to mimic a real camera feed, and I added static sounds to emphasize different actions in the artwork.</p>
 			</div>
 
 			<div class="minor-section">
@@ -71,19 +84,19 @@
 				<ul>
 					<li>
 						<h4><u>Contributions</u></h4>
-						<p>blahblahblah</p>
+						<p>I made the entirety of the code for this artwork, originally taking inspiration from work done by the inspirers mentioned above. I initially borrowed the “distortion effect” from one of the examples but I tweaked it enough to completely diversify it from the original in a meaningful way to serve my intended artistic direction.</p>
 					</li>
 					<li>
 						<h4><u>Reflection</u></h4>
-						<p>blahblahblah</p>
+						<p>I started with the “P_4_1_2_02” artwork since it had a general structure that I was aiming for with my experiment. Unfortunately, my first try with experiment was unable to reflect the ideas and concepts that I envisioned for the final product; the performance load was too great to effectively show off on a website. Luckily, I managed to spawn a new idea from the lessons I have learned, and I ended up creating a more polished experiment.</p>
 					</li>
 					<li>
 						<h4><u>Highs</u></h4>
-						<p>blahblahblah</p>
+						<p>Even if the result is not what I initially planned for, I still managed to find an interesting way to incorporate video and sounds into the Experiment 4 artwork that would elevate the experience. I am very proud of the overall “aesthetic” of the artwork that I have created.</p>
 					</li>
 					<li>
 						<h4><u>Lows</u></h4>
-						<p>blahblahblah</p>
+						<p>Finding a visual effect that was interesting yet performant was much more difficult than I realized, and I ended up losing a lot of progress because some methods to create the desired “ripple effect” just simply didn’t work. I was extremely disappointed that I couldn’t figure out a proper solution as I thought the ripple effect would be an intriguing idea.</p>
 					</li>
 				</ul>
 			</div>
