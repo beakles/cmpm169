@@ -26,7 +26,8 @@ let sound4;
 function preload() {
     sound1 = loadSound("assets/cameraRestart.wav");
     sound2 = loadSound("assets/cameraShutdown.wav");
-    sound2.rate(0.8);
+    sound2.volume(0.7);
+    sound2.rate(0.5);
     sound3 = loadSound("assets/click.wav");
     sound4 = loadSound("assets/staticSpawn.wav");
 }
