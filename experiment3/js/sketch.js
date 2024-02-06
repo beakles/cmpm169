@@ -43,11 +43,7 @@ function setup() {
   microphone.start();
 
   let audioContext = getAudioContext();
-
   sound1.play();
-  sound2.play();
-  sound3.play();
-  sound4.play();
 }
 
 function scatterScreen(times, size) {
@@ -92,6 +88,9 @@ function draw() {
       stroke(0, 0, 0, 0);
       rect(0, 0, width, height)
       currentVideoUpdateFrequency = settings.videoUpdateFrequency;
+      if (!sound1.isPlaying()) {
+        sound1.play();
+      }
     } else {
       videoUpdateDebounce = 0;
       currentVideoUpdateFrequency = settings.videoUpdateFrequency;
@@ -124,6 +123,7 @@ function draw() {
         } else {
           filter(THRESHOLD);
         }
+        sound3.play();
       }
       scatterScreen(10, 10);
     }
@@ -151,6 +151,9 @@ function draw() {
   }
   
   if (currentVideoUpdateFrequency >= settings.videoUpdateFrequencyMicActive && microphoneLevelMap < settings.microphoneLevelThreshold) {
+    if (!sound2.isPlaying()) {
+        sound2.play();
+    }
     scatterScreen(7, (width / 3) * (videoUpdateDebounce / currentVideoUpdateFrequency));
   }
   
