@@ -24,10 +24,10 @@ let sound3;
 let sound4;
 
 function preload() {
-  sound1 = loadSound("../../../assets/cameraRestart.wav");
-  sound2 = loadSound("../../../assets/cameraShutdown.wav");
-  sound3 = loadSound("../../../assets/click.wav");
-  sound4 = loadSound("../../../assets/staticSpawn.wav");
+  sound1 = loadSound("/assets/cameraRestart.wav");
+  sound2 = loadSound("/assets/cameraShutdown.wav");
+  sound3 = loadSound("/assets/click.wav");
+  sound4 = loadSound("/assets/staticSpawn.wav");
 }
 
 function setup() {
