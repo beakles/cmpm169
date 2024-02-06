@@ -24,10 +24,10 @@ let sound3;
 let sound4;
 
 function preload() {
-  sound1 = loadSound("/assets/cameraRestart.wav");
-  sound2 = loadSound("/assets/cameraShutdown.wav");
-  sound3 = loadSound("/assets/click.wav");
-  sound4 = loadSound("/assets/staticSpawn.wav");
+    sound1 = new p5.SoundFile("assets/cameraRestart.wav");
+    sound2 = new p5.SoundFile("assets/cameraShutdown.wav");
+    sound3 = new p5.SoundFile("assets/click.wav");
+    sound4 = new p5.SoundFile("assets/staticSpawn.wav");
 }
 
 function setup() {
@@ -41,6 +41,8 @@ function setup() {
   
   microphone = new p5.AudioIn();
   microphone.start();
+
+  let audioContext = getAudioContext();
 
   sound1.play();
   sound2.play();
