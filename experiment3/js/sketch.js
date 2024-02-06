@@ -1,14 +1,16 @@
+// Settings
+let settings = {
+    videoUpdateFrequency: 1 / 24,
+    videoUpdateFrequencyMicActive: 2,
+    microphoneLevelAmplifier: 1,
+    microphoneLevelThreshold: 20,
+    distortionSizeCap: 200,
+}
+
+// Global variables
 let videoFeed;
 let microphone;
 let microphoneLevelMap;
-
-let settings = {
-  videoUpdateFrequency: 1 / 24,
-  videoUpdateFrequencyMicActive: 2,
-  microphoneLevelAmplifier: 1,
-  microphoneLevelThreshold: 20,
-  distortionSizeCap: 200,
-}
 
 let textEnabledTime = 1;
 let textEnabledDebounce = 0;
@@ -23,6 +25,7 @@ let sound2;
 let sound3;
 let sound4;
 
+// Load the sounds
 function preload() {
     sound1 = loadSound("assets/cameraRestart.wav");
     sound2 = loadSound("assets/cameraShutdown.wav");
@@ -32,6 +35,7 @@ function preload() {
     sound4 = loadSound("assets/staticSpawn.wav");
 }
 
+// Set up the video and microphone feeds
 function setup() {
   createCanvas(600, 600);
   
@@ -48,6 +52,7 @@ function setup() {
   sound1.play();
 }
 
+// Glitch effect
 function scatterScreen(times, size) {
   if (size <= 1) {
     size = 1;
@@ -64,6 +69,7 @@ function scatterScreen(times, size) {
   }
 }
 
+// Camera lens
 function drawCrosshair() {
   fill(255, 255, 255, 255);
   stroke(0, 0, 0, 0);
@@ -83,6 +89,7 @@ function drawCrosshair() {
   rect(width / 2, height / 2 - 18, 5, 40);
 }
 
+// 
 function draw() {
   if (videoUpdateDebounce >= currentVideoUpdateFrequency) {
     if (currentVideoUpdateFrequency >= settings.videoUpdateFrequencyMicActive) {
@@ -102,6 +109,7 @@ function draw() {
       
       filter(GRAY);
       
+      // Flash the "recording" text periodically
       if (textEnabledBool) {
         fill(255, 0, 0, 170);
         stroke(0, 0, 0, 0);
@@ -117,6 +125,7 @@ function draw() {
         ellipse(40, 40, 20, 20);
       }
       
+      // Randomly make harder glitches
       glitchedBloomDebounce = random(0, 100);
       if (glitchedBloomDebounce <= 10) {
         let randomEffect = random(0, 100);
@@ -135,6 +144,7 @@ function draw() {
     videoUpdateDebounce += 1 / 60;
   }
   
+  // Debounce between text flashes
   if (textEnabledDebounce >= textEnabledTime) {
     textEnabledDebounce = 0;
     textEnabledBool = !textEnabledBool;
@@ -142,23 +152,24 @@ function draw() {
     textEnabledDebounce += 1 / 60;
   }
   
+  // Get the microphone volume
   let microphoneLevel = microphone.getLevel() * settings.microphoneLevelAmplifier;
   microphoneLevelMap = map(microphoneLevel, 0, 1, 0, settings.distortionSizeCap);
   microphoneLevelMap = floor(microphoneLevelMap);
   
-  print(microphoneLevelMap);
+  // print(microphoneLevelMap);
   
   if (microphoneLevelMap >= settings.microphoneLevelThreshold) {
     videoUpdateDebounce = 0;
     currentVideoUpdateFrequency = settings.videoUpdateFrequencyMicActive;
   }
   
+  // Crash the camera
   if (currentVideoUpdateFrequency >= settings.videoUpdateFrequencyMicActive && microphoneLevelMap < settings.microphoneLevelThreshold) {
-    if (!sound2.isPlaying()) {
-        sound2.play();
-    }
+    sound3.play();
     scatterScreen(7, (width / 3) * (videoUpdateDebounce / currentVideoUpdateFrequency));
   }
   
+  // Minor glitches throughout the art
   scatterScreen(microphoneLevelMap, microphoneLevelMap);
 }
