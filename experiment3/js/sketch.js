@@ -26,6 +26,7 @@ let sound4;
 function preload() {
     sound1 = loadSound("assets/cameraRestart.wav");
     sound2 = loadSound("assets/cameraShutdown.wav");
+    sound2.rate(0.8);
     sound3 = loadSound("assets/click.wav");
     sound4 = loadSound("assets/staticSpawn.wav");
 }
@@ -120,10 +121,11 @@ function draw() {
         let randomEffect = random(0, 100);
         if (randomEffect <= 50) {
           filter(DILATE);
+          sound3.play();
         } else {
           filter(THRESHOLD);
+          sound4.play();
         }
-        sound3.play();
       }
       scatterScreen(10, 10);
     }
