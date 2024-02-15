@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 4 - Pyramids in World Space</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -28,23 +28,43 @@
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 4 - Pyramids in World Space</h1>
+			<p>A collection of cartoony pyramids floating in a colorful space. The user can control their camera to get a different perspective as the pyramids break off from the pack to go their separate ways (WASD to move horizontally, Q/E to move vertically, arrow keys to rotate).</p>
 			<div class="minor-section">
 				<h2>Imitate</h2>
 				<p>To develop artistic creativity in coding, it can be helpful to start by studying and learning from existing examples. This might involve reviewing code written by others, analyzing successful techniques, or even copying and modifying code to better understand how it works. By imitating and learning from existing techniques and strategies, we can gain a better understanding of what has been done before and what is possible, and identify opportunities for improvement and innovation.</p>
 				<p>What code did you start with? (You don't need to provide the code itself, but where did you start?) Document this step briefly.</p>
+				<br>
+				<h3>Documentation</h3>
+				<p>My inspiration for this experiment drew primarily from the following pieces:</p>
+				<a href="https://openprocessing.org/sketch/1622414">KUMALEON Coding Challenge Sample by p4stoboy</a>
+				(A fork of <a href="https://openprocessing.org/sketch/1599946">KUMALEON Coding Challenge Sample by KUMALEON</a>)
+				<p>Strangely, the p5js version of the artwork could not render the figurine shown in the picture; the source code for the figurine itself is seemingly stored within the “index.html” file which is nearly impossible to read and understand. I was okay with this, however, as I was mostly interested in the arranged 3D triangular shapes forming the background of the canvas. My idea was to create an arrangement of 3D pyramids with a sine-wave motion, with the user being capable of rotating their perspective to observe and potentially interact with the shapes.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Integrate</h2>
 				<p>After learning from existing techniques and strategies, we can build upon that foundation by combining elements from different sources. This might involve combining elements from different programming languages, using libraries or frameworks in new ways, or bringing together techniques from different fields or disciplines. By integrating and combining elements from different sources, we can create something new and unique.</p>
 				<p>How did you extend the code or combine with another technique to make something new? Document this step.</p>
+				<br>
+				<h3>Documentation</h3>
+				<p>First, I wanted to modify the code so that it was easier to read and understand. I started by removing bits of code that were unnecessary to making the artpiece work like the “kumaleon” class that would store the canvas despite it not being used in the code. Commenting out the “applyMatrix” line adjusted the “perspective” of the scene, which I thought was interesting.</p>
+				<p>After substantial truncation, I managed to trim the code down to a small snippet of what I felt was important enough to serve as a steppingstone for my experiment. In its current state, the code creates a canvas, then creates the shapes to occupy the canvas space. I also adjusted the colors so that they could be more “predictable” as the original code chose from an abstract table of values that didn’t exactly explain the functionality of the artwork.</p>
+				<p>I then attempted to apply a sine-wave motion to the drawing, but instead of moving each individual shape, it simply squashed and stretched the already-existing image in a bobbing motion. While the results were not what I anticipated, the test still helped me visualize how objects in 3D space could move around and how I could use the matrix function to apply shifts and rotations to the result.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Innovate</h2>
 				<p>Finally, we can introduce new or original ideas to our coding process by thinking creatively and pushing the boundaries. This might involve developing entirely new techniques or approaches, or using existing techniques in new and creative ways. By innovating and introducing new ideas, we can create art that is truly groundbreaking.</p>
 				<p>How did you use the code as a jumping off point to create something truly unique and novel? Document this step thoroughly.</p>
+				<br>
+				<h3>Documentation</h3>
+				<p>I first started by converting the canvas to WEBGL to enable 3D, then I created an array of 3D pyramid shapes on the canvas.</p>
+				<p>I felt that the artwork wasn’t visually interesting enough, so I added functionality to rotate the screen based on the mouse’s location, and I adjusted the spacing and color of the shapes to better contrast with the background.</p>
+				<p>While experimenting, I thought of the idea of allowing the user to control a virtual camera much like in a game engine, using the arrow keys for controlling the camera orientation and using the WASD keys to move around the scene.</p>
+				<p>After adjusting the “feel” of the camera movement, I then adjusted the amount and movement of the shapes such that they will start to float away in a random direction over time. To emphasize the 3D effect of the scene, I added the ability to pan the camera up and down with the “Q” and “E” keys. I also added a colored background that changes upon each launch.</p>
+				<p>To add some “juice” to the experiment, I added a “cartoon” aesthetic to the shapes and gave them a darker side to give the illusion of “shadows” in the scene. I also adjusted the spacing of the shapes to give each one more prominence.</p>
+				<p>After playing around with the experiment for a little while, I decided to add smooth camera movement to emphasize the “weight” of the user’s actions and to make the experience feel more polished. I also changed the camera rotation input from the arrow keys to “IJKL” respectively; the arrow keys did not work well with websites as they would try to navigate within the page as well as the canvas’ camera.</p>
 			</div>
 
 			<div class="minor-section">
@@ -54,6 +74,26 @@
 					<li>What part of the project you contributed</li>
 					<li>A reflection on your work and the work of the team</li>
 					<li>Brief highs and lows</li>
+				</ul>
+				<br>
+				<h3>Documentation</h3>
+				<ul>
+					<li>
+						<h4><u>Contributions</u></h4>
+						<p>I made the entirety of the code for this artwork, originally taking inspiration from work done by the inspirers mentioned above. I utilized the methods the “KUMALEON Coding Challenge Sample” used to create the 3D shapes such as the matrix rotation to allow for camera movement.</p>
+					</li>
+					<li>
+						<h4><u>Reflection</u></h4>
+						<p>I think this experiment, despite being relatively simple on the surface, turned out to be quite a fun challenge in terms of having to change my workflow from a 2D environment into a 3D space with an extra dimension and the difficulties that come with navigating in more than two dimensions.</p>
+					</li>
+					<li>
+						<h4><u>Highs</u></h4>
+						<p>I enjoy the ability for the use to “navigate” within the canvas by using keyboard inputs, allowing them to observe the movement of the pyramids in real-time from a variety of perspectives. I also like the “smooth” camera movements that make the navigation feel “weighty” and fluid.</p>
+					</li>
+					<li>
+						<h4><u>Lows</u></h4>
+						<p>I couldn’t get a good start on this experiment because of my illness from last week, which also made it difficult to find an interesting idea for an experiment based in 3D graphics. In addition, performance costs made it difficult to add more than a set number of distinct shapes to the canvas without causing degradation.</p>
+					</li>
 				</ul>
 			</div>
 
@@ -66,6 +106,14 @@
 		</section>
 		<nav id="links">
 			<!-- Put links to other pages (including the homepage) here. -->
+			<ul>
+				<li><a href="../index.html">Homepage</a></li>
+				<li><a href="../experiment1/index.html">Experiment 1 - Vector Germs</a></li>
+				<li><a href="../experiment2/index.html">Experiment 2 - Generatith</a></li>
+				<li><a href="../experiment3/index.html">Experiment 3 - Found Footage</a></li>
+				<li><a href="../experiment5/index.html">Experiment 5 - TBD</a></li>
+				<li><a href="../experiment6/index.html">Experiment 6 - TBD</a></li>
+			</ul>
 		</nav>
 	</main>
 </body>

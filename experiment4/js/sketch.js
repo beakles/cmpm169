@@ -88,7 +88,8 @@ class Shape {
     push();
     translate(this.position.x, this.position.y, this.position.z);
     
-    noStroke();
+    stroke(this.outlineColor);
+    strokeCap(ROUND);
     fill(this.shapeColor);
     
     // Base
@@ -99,7 +100,6 @@ class Shape {
     vertex(-shapeSize / 2, shapeSize / 2, 0);
     endShape(CLOSE);
     
-    stroke(this.outlineColor);
     strokeWeight(shapeSize / 10);
     
     // Triangle side 1
@@ -189,16 +189,16 @@ function keyPressed() {
     elevationKeyDownPressed = true;
   }
   
-  if (keyCode == UP_ARROW) {
+  if (key == "i") {
     keyUpPressed = true;
   }
-  if (keyCode == LEFT_ARROW) {
+  if (key == "j") {
     keyLeftPressed = true;
   }
-  if (keyCode == DOWN_ARROW) {
+  if (key == "k") {
     keyDownPressed = true;
   }
-  if (keyCode == RIGHT_ARROW) {
+  if (key == "l") {
     keyRightPressed = true;
   }
 }
@@ -224,16 +224,16 @@ function keyReleased() {
     elevationKeyDownPressed = false;
   }
   
-  if (keyCode == UP_ARROW) {
+  if (key == "i") {
     keyUpPressed = false;
   }
-  if (keyCode == LEFT_ARROW) {
+  if (key == "j") {
     keyLeftPressed = false;
   }
-  if (keyCode == DOWN_ARROW) {
+  if (key == "k") {
     keyDownPressed = false;
   }
-  if (keyCode == RIGHT_ARROW) {
+  if (key == "l") {
     keyRightPressed = false;
   }
 }
