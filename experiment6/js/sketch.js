@@ -11,8 +11,11 @@ let cameraXStart = 0;
 let cameraYStart = 0;
 let cameraXDelta = 0;
 let cameraYDelta = 0;
-let cameraZoom = -2000;
+let cameraZoom = -1000;
 let isMovingCamera = false;
+
+let isZoomingIn = false;
+let isZoomingOut = false;
 
 let mapImage;
 let font;
@@ -172,6 +175,7 @@ function mouseReleased() {
 }
 
 function mouseWheel(mouseWheelInput) {
+  /*
   cameraZoom -= mouseWheelInput.delta / 5;
   
   if (cameraZoom >= 300) {
@@ -181,6 +185,7 @@ function mouseWheel(mouseWheelInput) {
   if (cameraZoom <= -4000) {
     cameraZoom = -4000;
   }
+  */
 }
 
 function keyPressed() {
@@ -189,6 +194,21 @@ function keyPressed() {
   }
   if (key == "h") {
     showLabels = !showLabels;
+  }
+  if (key == "q") {
+    isZoomingIn = true;
+  }
+  if (key == "e") {
+    isZoomingOut = true;
+  }
+}
+
+function keyReleased() {
+  if (key == "q") {
+    isZoomingIn = false;
+  }
+  if (key == "e") {
+    isZoomingOut = false;
   }
 }
 
@@ -200,7 +220,7 @@ function preload() {
 
 function setup() {
   canvasContainer = $("#canvas-container");
-  let canvasNew = createCanvas(canvasContainer.width(), canvasContainer.height(), WEBGL);
+  let canvasNew = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvasNew.parent("canvas-container");
   // resize canvas is the page is resized
   $(window).resize(function() {
@@ -231,8 +251,8 @@ function draw() {
   noStroke();
   fill(255, 255, 255);
   textAlign(CENTER, CENTER);
-  textSize(12);
-  text("List of potential Nuclear warhead targets (Natural Resources Defense Council, FEMA and Medicine and Global Survival, 2015)\nUse the mouse (click and hold to drag, mouse wheel to zoom in/out) to navigate around the map\nPress R to swap between visualizations (1 warhead = ~3 miles of destructive power)\nPress H to show/hide labels", 0, -canvasContainer.height() / 2 + 45 + 5 * sin(increment / 50));
+  textSize(canvasContainer.width() / 100);
+  text("List of potential Nuclear warhead targets (Natural Resources Defense Council, FEMA and Medicine and Global Survival, 2015)\nUse the mouse (click and hold to drag) and keyboard (Q/E to zoom in/out) to navigate around the map\nPress R to swap between visualizations (1 warhead = ~3 miles of destructive power)\nPress H to show/hide labels", 0, -canvasContainer.height() / 2 + (canvasContainer.width() / 30) + 5 * sin(increment / 50));
   
   increment += 1;
   
@@ -242,6 +262,21 @@ function draw() {
   // Set up the camera
   rotateX(radians(75 - 15 * (cameraZoom / 4000) - mouseOffsetY / 200 + 1 * sin(increment / 100)))
   rotateY(radians(mouseOffsetX / 200 + 1 * cos(increment / 100)));
+  
+  if (isZoomingIn) {
+    cameraZoom -= 50;
+  }
+  if (isZoomingOut) {
+    cameraZoom += 50;
+  }
+  
+  if (cameraZoom >= 300) {
+    cameraZoom = 300;
+  }
+  
+  if (cameraZoom <= -4000) {
+    cameraZoom = -4000;
+  }
   
   if (isMovingCamera) {
     cameraXDelta = cameraXStart - mouseX + cameraXLast;
