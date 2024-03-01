@@ -1,0 +1,60 @@
+city,state,coordinateX,coordinateY,bigTargetScenario,smallTargetScenario,clusterSize
+Sacramento,California,-450,-90,1,1,4
+San Jose,California,-470,-70,1,1,6
+San Francisco,California,-470,-100,1,1,10
+Oakland,California,-460,-70,1,1,2
+Los Angeles,California,-420,90,1,1,16
+San Diego,California,-400,150,1,1,12
+Seattle,Washington,-400,-400,1,1,20
+Olympia,Washington,-410,-390,1,0,1
+Salem,Oregon,-420,-300,0,1,2
+Pheonix,Arizona,-310,150,1,1,10
+Santa Fe,New Mexico,-190,100,1,0,1
+Austin,Texas,-60,300,1,1,5
+Salt Lake City,Utah,-280,-100,1,1,6
+Denver,Colorado,-170,-40,1,1,8
+Cheyenne,Wyoming,-160,-100,1,0,50
+Helena,Montana,-260,-310,1,0,100
+Bismarck,North Dakota,-80,-300,1,0,75
+Pierre,South Dakota,-80,-200,1,0,1
+Carson City,Nevada,-410,-90,0,1,1
+Las Vegas,Nevada,-355,50,1,1,5
+Boise,Idaho,-330,-210,0,1,1
+Oklahoma City,Oklahoma,-50,120,1,1,4
+St. Paul,Minnesota,30,-220,1,1,8
+Minneapolis,Minnesota,20,-220,1,1,8
+Des Moines,Iowa,20,-100,1,1,2
+Lincoln,Oregon,-30,-90,1,1,2
+Omaha,Oregon,-20,-100,1,1,4
+Jackson,Mississippi,100,230,1,1,2
+Montgomery,Alabama,170,230,1,1,4
+Birmingham,Alabama,150,190,1,1,6
+Huntsville,Alabama,150,130,1,1,3
+Memphis,Tennessee,100,120,1,1,6
+Little Rock,Arkansas,50,130,1,1,3
+Baton Rouge,Louisiana,80,310,1,1,4
+New Orleans,Louisiana,95,315,1,1,6
+Jefferson City,Missouri,40,0,1,1,3
+St. Louis,Missouri,70,-10,1,1,10
+Springfield,Illinois,90,-60,1,1,3
+Chicago,Illinois,115,-120,1,1,30
+Madison,Wisconsin,90,-150,1,1,2
+Indianapolis,Indiana,150,-60,1,1,8
+Lansing,Michigan,170,-160,0,1,2
+Frankfort,Kentucky,180,20,1,1,2
+Columbus,Ohio,210,-70,1,1,4
+Charleston,West Virginia,230,-10,1,1,3
+Knoxville,Tennessee,200,80,1,1,4
+Nashville,Tennessee,150,80,1,1,3
+Raleigh,North Carolina,280,60,1,1,4
+Columbia,South Carolina,260,140,1,1,2
+Savannah,Georgia,260,200,1,1,4
+Tallahassee,Florida,210,280,1,0,1
+Miami,Floria,300,420,1,1,15
+Pittsburg,Pennsylvania,260,-90,1,1,7
+Harrisburg,Pennsylvania,300,-100,1,1,5
+Annapolis,Maryland,310,-40,1,1,20
+Trenton,New Jersey,345,-105,1,1,45
+Hartford,Connecticut,365,-180,1,1,20
+Providence,Rhode Island,385,-190,1,1,15
+Boston,Massachusetts,385,-210,1,1,10
