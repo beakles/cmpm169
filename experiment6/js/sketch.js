@@ -264,14 +264,14 @@ function draw() {
   rotateY(radians(mouseOffsetX / 200 + 1 * cos(increment / 100)));
   
   if (isZoomingIn) {
-    cameraZoom -= 50;
+    cameraZoom -= 25;
   }
   if (isZoomingOut) {
-    cameraZoom += 50;
+    cameraZoom += 25;
   }
   
-  if (cameraZoom >= 300) {
-    cameraZoom = 300;
+  if (cameraZoom >= 400) {
+    cameraZoom = 400;
   }
   
   if (cameraZoom <= -4000) {
