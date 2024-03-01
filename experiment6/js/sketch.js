@@ -1,3 +1,4 @@
+/*
 // sketch.js - purpose and description here
 // Author: Your Name
 // Date:
@@ -65,3 +66,4 @@ function draw() {
 function mousePressed() {
     // code to run when mouse is pressed
 }
+*/

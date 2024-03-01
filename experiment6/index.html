@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 6 - Nuclear Catastrophe</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -28,23 +28,45 @@
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 6 - Nuclear Catastrophe</h1>
+			<p>A visual representation of the potential catastrophe if a nuclear war was to begin, showcasing humanity dangling on a thin thread where even one small mistake can have disastrous consequences.</p>
+			<p>Sources used:</p>
+			<a href="https://www.cbsnews.com/chicago/news/best-places-to-survive-a-nuclear-apocalypse/"></a>
+			<a href="https://commons.wikimedia.org/wiki/File:Map_of_USA_without_state_names.svg"></a>
 			<div class="minor-section">
 				<h2>Imitate</h2>
 				<p>To develop artistic creativity in coding, it can be helpful to start by studying and learning from existing examples. This might involve reviewing code written by others, analyzing successful techniques, or even copying and modifying code to better understand how it works. By imitating and learning from existing techniques and strategies, we can gain a better understanding of what has been done before and what is possible, and identify opportunities for improvement and innovation.</p>
 				<p>What code did you start with? (You don't need to provide the code itself, but where did you start?) Document this step briefly.</p>
+				<br>
+				<h3>Documentation</h3>
+				<p>My inspiration for this experiment drew primarily from the following pieces:</p>
+				<a href="http://www.generative-gestaltung.de/2/sketches/?02_M/M_6_1_01">M_6_1_01 by Benedikt Groß, Hartmut Bohnacker, Julia Laub, Claudius Lazzeroni with contributions by Joey Lee and Niels Poldervaart</a> and <a href="https://bear71vr.nfb.ca/">Bear 71 by Jeremy Mendes and Leanne Allison</a>.
+				<p>I thought it was interesting to learn about MAD (mutually assured destruction) in classes from long ago, and how close we as a species have gotten close to nuclear warfare numerous times over the last century. I wanted to try to create a visualization of that to show how humanity is essentially living on a delicate thread that is waiting to snap from even a small mistake.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Integrate</h2>
 				<p>After learning from existing techniques and strategies, we can build upon that foundation by combining elements from different sources. This might involve combining elements from different programming languages, using libraries or frameworks in new ways, or bringing together techniques from different fields or disciplines. By integrating and combining elements from different sources, we can create something new and unique.</p>
 				<p>How did you extend the code or combine with another technique to make something new? Document this step.</p>
+				<br>
+				<h3>Documentation</h3>
+				<p>I started with M_6_1_01 as it was the artwork that was the most close to resembling what I wanted to achieve with my experiment. I started by changing the color palette with red dots on a black background as I felt they would create a stronger contrast when layered with a white country in between.</p>
+				<p>As I was working on my code trying to create a randomized “island” for the dots to spawn on, I accidentally created this effect where the the dots “branch” out from the epicenter which I thought was interesting to look at. I then brainstormed an idea of having “red pillars” from the warheads’ points of impact as a way to showcase the sheer magnitude of the circumstances surrounding a nuclear war.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Innovate</h2>
 				<p>Finally, we can introduce new or original ideas to our coding process by thinking creatively and pushing the boundaries. This might involve developing entirely new techniques or approaches, or using existing techniques in new and creative ways. By innovating and introducing new ideas, we can create art that is truly groundbreaking.</p>
 				<p>How did you use the code as a jumping off point to create something truly unique and novel? Document this step thoroughly.</p>
+				<br>
+				<h3>Documentation</h3>
+				<p>I first started by grabbing a free-to-use map of the United States so that I have a canvas to plot my points in. I photoshopped the image to black and white and removed the neighboring countries so that I can focus solely on the United States for data plotting.</p>
+				<p>I then added the map in a 3D environment so that I can apply a “perspective” when the map will eventually be filled with data points.</p>
+				<p>I then changed the color of the background to add better contrast and added functionality to allow the user to navigate around the map; clicking and dragging will pan the map, while the scroll wheel will zoom in and out.</p>
+				<p>Next, I added a way to parse data from a CSV file that contains the state, city, x-coordinate, y-coordinate, and number of warheads for each data point. I also added text at the top to signify what the data is supposed to represent.</p>
+				<p>I then provided example CSV data to then create a visualization of the data that would best showcase each point in a way that was clear and concise.</p>
+				<p>After some refinement, I added the dataset to the CSV file which will then be represented on the map as red pillars, the height of which represents the number of warheads that would possibly be sent to that area in a nuclear war.</p>
+				<p>Finally, I added the option to allow the user to switch between two different visualizations as well as hiding the labels for a clearer view of the map. I felt that a pillar that showed the number of warheads wouldn’t encapsulate the gravity of the circumstance, so I thought having a visual indication of the range of destruction the warheads would cause would serve as an eye-opening realization.</p>
 			</div>
 
 			<div class="minor-section">
@@ -54,6 +76,26 @@
 					<li>What part of the project you contributed</li>
 					<li>A reflection on your work and the work of the team</li>
 					<li>Brief highs and lows</li>
+				</ul>
+				<br>
+				<h3>Documentation</h3>
+				<ul>
+					<li>
+						<h4><u>Contributions</u></h4>
+						<p>I made the entirety of the code for this artwork, originally taking inspiration from work done by the inspirers mentioned above.</p>
+					</li>
+					<li>
+						<h4><u>Reflection</u></h4>
+						<p>I made a visual representation of the possible destruction of the United States if nuclear war was to occur (according to data sourced from 2015). The user can switch between a numerical and radial visualization of the nuclear destruction to get a grasp of the deadliness of such a battle and of the dreadfulness of a land ravaged by war.</p>
+					</li>
+					<li>
+						<h4><u>Highs</u></h4>
+						<p>Even though this experiment took much longer than I anticipated, I still really like what I was able to create with the data represented as “flags” where the height of the flag represents the quantity of warheads that are likely to target the specified location in the United States.</p>
+					</li>
+					<li>
+						<h4><u>Lows</u></h4>
+						<p>Creating an experiment that I felt was polished and interesting was much more difficult than I anticipated. In addition, I couldn’t find data that I could easily import into a CSV file, so I had to manually add the data myself which took a substantial amount of time.</p>
+					</li>
 				</ul>
 			</div>
 
@@ -66,6 +108,14 @@
 		</section>
 		<nav id="links">
 			<!-- Put links to other pages (including the homepage) here. -->
+			<ul>
+				<li><a href="../index.html">Homepage</a></li>
+				<li><a href="../experiment1/index.html">Experiment 1 - Vector Germs</a></li>
+				<li><a href="../experiment2/index.html">Experiment 2 - Generatith</a></li>
+				<li><a href="../experiment6/index.html">Experiment 3 - Found Footage</a></li>
+				<li><a href="../experiment4/index.html">Experiment 4 - Pyramids in World Space</a></li>
+				<li><a href="../experiment5/index.html">Experiment 5 - Word Factory</a></li>
+			</ul>
 		</nav>
 	</main>
 </body>

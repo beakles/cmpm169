@@ -1,3 +1,4 @@
+/*
 // project.js - purpose and description here
 // Author: Your Name
 // Date:
@@ -32,3 +33,4 @@ function main() {
 
 // let's get this party started - uncomment me
 //main();
+*/
